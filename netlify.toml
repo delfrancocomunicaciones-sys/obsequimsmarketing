@@ -1,0 +1,21 @@
+# Configuración de despliegue en Netlify (deploy conectado al repositorio).
+# El fallback SPA también existe como public/_redirects, que Vite copia a dist/,
+# de modo que el drag & drop de la carpeta dist/ funciona igual.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Assets con hash: cache inmutable de larga duración.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
