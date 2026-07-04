@@ -80,7 +80,9 @@ const documents = DOCS.filter((d) => available.includes(d.file)).map((doc) => {
   };
 });
 
-writeFileSync(outFile, JSON.stringify({ generatedAt: new Date().toISOString(), documents }, null, 2));
+// Salida determinista (sin timestamp): regenerar no ensucia el árbol de git
+// si las fuentes no cambiaron.
+writeFileSync(outFile, JSON.stringify({ documents }, null, 2));
 
 // Estadísticas ligeras para páginas que no necesitan el contenido completo
 // (evita arrastrar el JSON íntegro al bundle inicial).
