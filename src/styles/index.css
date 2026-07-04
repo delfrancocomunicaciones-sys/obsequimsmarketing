@@ -1,0 +1,96 @@
+@import '@fontsource/cormorant-garamond/latin-400.css';
+@import '@fontsource/cormorant-garamond/latin-500.css';
+@import '@fontsource/cormorant-garamond/latin-600.css';
+@import '@fontsource/cormorant-garamond/latin-400-italic.css';
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/inter/latin-600.css';
+@import 'tailwindcss';
+
+/*
+ * Sistema cromático Obsequiums — HEX exactos del Brief Técnico de Identidad
+ * Visual (§4.1): paleta cálida, neutra, desaturada, táctil y atemporal.
+ */
+@theme {
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-ivory: #f4f0e8;
+  --color-parchment: #faf8f3;
+  --color-sand: #d8cbbb;
+  --color-greige: #b8aea0;
+  --color-taupe: #8b7b6a;
+  --color-carbon: #2e2924;
+  --color-camel: #b7794c;
+  --color-chocolate: #4a3328;
+  --color-moss: #596153;
+  --color-smoke: #637383;
+  --color-brass: #a48658;
+
+  --shadow-soft: 0 1px 2px rgb(46 41 36 / 0.04), 0 8px 24px -8px rgb(46 41 36 / 0.1);
+  --shadow-lift: 0 2px 4px rgb(46 41 36 / 0.05), 0 16px 40px -12px rgb(46 41 36 / 0.16);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-ivory font-sans text-carbon antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-camel);
+    color: var(--color-ivory);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-camel);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  /* Textura de papel cálido, casi imperceptible (§4.2: fondos ligeramente texturados). */
+  .bg-grain {
+    background-image: radial-gradient(rgb(46 41 36 / 0.025) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .kicker {
+    @apply font-sans text-[0.6875rem] font-semibold tracking-[0.22em] uppercase;
+  }
+
+  .measure {
+    max-width: 68ch;
+  }
+
+  /* Scrollbar sobria para tablas con scroll horizontal. */
+  .scroll-elegant {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-greige) transparent;
+  }
+  .scroll-elegant::-webkit-scrollbar {
+    height: 6px;
+  }
+  .scroll-elegant::-webkit-scrollbar-thumb {
+    background: var(--color-greige);
+    border-radius: 3px;
+  }
+}
