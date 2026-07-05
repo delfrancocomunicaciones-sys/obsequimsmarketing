@@ -3,10 +3,12 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { NAV_ITEMS } from '../data/navigation';
 import { claims, tesisMadre, norteCreativo } from '../data/brand';
 import heroCollection from '../assets/hero-collection.webp';
+import fotoRelojes from '../assets/foto-momento-relojes.webp';
+import fotoPulseras from '../assets/foto-momento-pulseras.webp';
+import fotoRegalo from '../assets/foto-momento-regalo.webp';
 import Section from '../components/ui/Section';
 import Reveal from '../components/ui/Reveal';
 import QuoteBlock from '../components/ui/QuoteBlock';
-import AssetPlaceholder from '../components/ui/AssetPlaceholder';
 import CTASection from '../components/ui/CTASection';
 import MetricCard from '../components/ui/MetricCard';
 
@@ -14,22 +16,22 @@ const MOMENTOS = [
   {
     title: 'Para relojes',
     text: 'El lugar que merece tu reloj cuando no lo llevas puesto. Protección, escala, viaje y autoridad funcional.',
-    placeholder: 'Reloj entrando en el estuche, luz lateral',
-    tone: 'chocolate' as const,
+    img: fotoRelojes,
+    alt: 'Un hombre con traje coloca un reloj de pulsera en un estuche de piel camel abierto sobre una consola de madera, junto a un frasco de perfume.',
     to: '/producto',
   },
   {
     title: 'Para pulseras',
     text: 'No todo lo que usas para sentirte tú debería terminar en un cajón. Tocador, brazaletes y joyas rígidas.',
-    placeholder: 'Escena de tocador con pulseras y estuche abierto',
-    tone: 'camel' as const,
+    img: fotoPulseras,
+    alt: 'Manos de mujer guardan pulseras y brazaletes de oro en un estuche de piel marrón sobre un tocador de mármol, junto a un frasco de perfume y un espejo.',
     to: '/buyer-personas',
   },
   {
     title: 'Para regalar',
     text: 'Un regalo personal sin caer en lo obvio. Packaging, iniciales y una experiencia de apertura que se recuerda.',
-    placeholder: 'Manos entregando la caja regalo con tarjeta',
-    tone: 'moss' as const,
+    img: fotoRegalo,
+    alt: 'Una persona entrega a otra un estuche de piel envuelto con lazo y tarjeta de marca Obsequiums, en un salón de ambiente cálido.',
     to: '/ecommerce',
   },
 ];
@@ -147,13 +149,14 @@ export default function Home() {
                 to={momento.to}
                 className="group flex h-full flex-col overflow-hidden rounded-md border border-sand/70 bg-ivory shadow-soft transition-shadow duration-300 hover:shadow-lift"
               >
-                <AssetPlaceholder
-                  label={momento.placeholder}
-                  kind="escena"
-                  tone={momento.tone}
-                  ratio="4/3"
-                  className="rounded-none shadow-none"
-                />
+                <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+                  <img
+                    src={momento.img}
+                    alt={momento.alt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
                 <div className="flex grow flex-col p-6">
                   <h3 className="font-display text-2xl font-medium text-chocolate">{momento.title}</h3>
                   <p className="mt-2.5 grow text-[0.92rem] leading-relaxed text-carbon/80">{momento.text}</p>
