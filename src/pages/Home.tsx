@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { NAV_ITEMS } from '../data/navigation';
 import { claims, tesisMadre, norteCreativo } from '../data/brand';
-import archiveStats from '../data/archive.stats.json';
+import heroCollection from '../assets/hero-collection.webp';
 import Section from '../components/ui/Section';
 import Reveal from '../components/ui/Reveal';
 import QuoteBlock from '../components/ui/QuoteBlock';
@@ -47,51 +47,60 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero sensorial: instala el universo antes de explicar (Brief §9.1) */}
-      <section className="relative isolate overflow-hidden bg-carbon bg-grain">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_-20%,rgb(183_121_76/0.4),transparent_55%),radial-gradient(ellipse_at_95%_115%,rgb(89_97_83/0.35),transparent_50%)]"
-        />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 pt-32 pb-20 md:pt-44 md:pb-28 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <motion.p {...enter(0)} className="kicker text-brass">
-              Obsequiums · Marroquinería de lujo accesible · España
-            </motion.p>
-            <motion.h1
-              {...enter(0.1)}
-              className="mt-6 font-display text-[2.7rem] leading-[1.02] font-medium text-ivory md:text-[4.3rem]"
-            >
-              Para las piezas que no se guardan en cualquier lugar.
-            </motion.h1>
-            <motion.p {...enter(0.2)} className="mt-7 max-w-xl text-lg leading-relaxed text-sand">
-              {claims.functional}
-            </motion.p>
-            <motion.div {...enter(0.3)} className="mt-10 flex flex-wrap gap-4">
-              <Link
-                to="/universo"
-                className="rounded-sm bg-camel px-7 py-3.5 font-sans text-[0.8rem] font-semibold tracking-[0.14em] text-ivory uppercase transition-colors hover:bg-brass"
-              >
-                Entrar al universo
-              </Link>
-              <Link
-                to="/archivo-estrategico"
-                className="rounded-sm border border-greige/50 px-7 py-3.5 font-sans text-[0.8rem] font-semibold tracking-[0.14em] text-sand uppercase transition-colors hover:border-sand hover:text-ivory"
-              >
-                Abrir el archivo estratégico
-              </Link>
-            </motion.div>
-          </div>
-          <motion.div {...enter(0.25)} className="hidden lg:block">
-            <AssetPlaceholder
-              label="Video hero: manos abriendo el estuche, pieza entrando"
-              kind="video"
-              tone="chocolate"
-              ratio="4/5"
-            />
+      {/* Hero editorial claro: producto sobre fondo marfil, titular a dos tonos */}
+      <section className="relative isolate overflow-hidden bg-ivory bg-grain">
+        <div className="relative mx-auto max-w-7xl px-6 pt-24 pb-14 md:pt-28 md:pb-20">
+          <motion.div {...enter(0)} className="flex items-center justify-between border-b border-sand/60 pb-4">
+            <p className="kicker text-taupe">Marroquinería de lujo accesible</p>
+            <p className="kicker flex items-center gap-2 text-taupe">
+              Lanzamiento 2026 <span aria-hidden="true">·</span> <span lang="es">ES</span>
+            </p>
           </motion.div>
+
+          <div className="mt-10 grid items-center gap-10 md:mt-14 lg:grid-cols-[1.02fr_0.98fr] lg:gap-6">
+            <div>
+              <motion.h1
+                {...enter(0.06)}
+                className="font-display text-[3rem] leading-[0.98] font-semibold tracking-[-0.01em] text-carbon sm:text-[3.8rem] md:text-[5rem]"
+              >
+                <span className="block">El tiempo,</span>
+                <span className="block font-medium text-brass italic">elegido con calma.</span>
+              </motion.h1>
+              <motion.p {...enter(0.16)} className="mt-8 max-w-md text-[1.05rem] leading-relaxed text-carbon/75">
+                Una colección breve y deliberada. Construida en torno a las piezas que merecen la espera — y los
+                rituales que las hacen tuyas.
+              </motion.p>
+              <motion.p {...enter(0.22)} className="mt-4 max-w-md text-[0.9rem] leading-relaxed text-taupe">
+                Estuches de piel personalizables para relojes, pulseras y piezas personales con valor.
+              </motion.p>
+              <motion.div {...enter(0.3)} className="mt-9 flex flex-wrap gap-4">
+                <Link
+                  to="/universo"
+                  className="rounded-sm bg-carbon px-7 py-3.5 font-sans text-[0.8rem] font-semibold tracking-[0.14em] text-ivory uppercase transition-colors hover:bg-chocolate"
+                >
+                  Entrar al universo
+                </Link>
+                <Link
+                  to="/archivo-estrategico"
+                  className="rounded-sm border border-greige/60 px-7 py-3.5 font-sans text-[0.8rem] font-semibold tracking-[0.14em] text-chocolate uppercase transition-colors hover:border-carbon hover:text-carbon"
+                >
+                  Abrir el archivo estratégico
+                </Link>
+              </motion.div>
+            </div>
+
+            <motion.figure {...enter(0.2)} className="lg:-mr-6">
+              <img
+                src={heroCollection}
+                alt="La colección Obsequiums: cinco estuches cilíndricos de piel abiertos —marrón, gris, camel, azul humo y verde musgo— sobre pedestales de tono arena."
+                width={1920}
+                height={1080}
+                fetchPriority="high"
+                className="h-auto w-full object-contain"
+              />
+            </motion.figure>
+          </div>
         </div>
-        <div aria-hidden="true" className="relative h-px bg-gradient-to-r from-transparent via-brass/50 to-transparent" />
       </section>
 
       {/* Qué es: claridad inmediata tras la emoción */}
@@ -204,13 +213,19 @@ export default function Home() {
         </ul>
       </Section>
 
-      {/* Profundidad documental en cifras */}
+      {/* Cifras estratégicas del plan */}
       <Section tone="sand">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <MetricCard value="2" label="Documentos maestros" detail="Plan Marketing 360 CMO Integral y Brief Técnico de Identidad Visual y Web, íntegros." index={0} />
-          <MetricCard value={String(archiveStats.secciones)} label="Secciones en el archivo" detail="Cada capítulo original conservado palabra por palabra." index={1} />
-          <MetricCard value="13" label="Campañas del primer año" detail="De Teaser a European test, con presupuesto y criterio de decisión." index={2} />
-          <MetricCard value="6+14" label="Personas y momentos" detail="Buyer personas y momentos íntimos de conexión completos." index={3} />
+        <Reveal>
+          <p className="kicker text-camel">El negocio, en cifras</p>
+          <h2 className="mt-4 max-w-2xl font-display text-3xl leading-[1.1] font-medium text-chocolate md:text-4xl">
+            Una hipótesis de marca con ambición y disciplina.
+          </h2>
+        </Reveal>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <MetricCard value="170–210 €" label="Ticket medio objetivo" detail="Producto base 120–240 €, con personalización de 15–35 € como palanca de margen." index={0} />
+          <MetricCard value="200.000" label="Comunidad cualificada · año 1" detail="Seguidores tratados como activo de negocio, no como métrica de vanidad." index={1} tone="accent" />
+          <MetricCard value="12 meses" label="Roadmap de lanzamiento" detail="De la estrategia y el pre-lanzamiento a la expansión europea controlada." index={2} />
+          <MetricCard value="13" label="Campañas del primer año" detail="Del teaser a la validación europea, cada una con su criterio de decisión." index={3} />
         </div>
       </Section>
 

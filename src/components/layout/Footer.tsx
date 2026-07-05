@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <p className="font-display text-xl font-semibold tracking-[0.28em] uppercase">Obsequiums</p>
+            <p className="font-display text-3xl font-medium tracking-tight lowercase">obsequiums</p>
             <p className="mt-4 max-w-xs font-display text-lg leading-snug text-sand italic">
               Para las piezas que no se guardan en cualquier lugar.
             </p>

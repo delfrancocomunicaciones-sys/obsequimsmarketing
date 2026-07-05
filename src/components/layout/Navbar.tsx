@@ -13,9 +13,9 @@ export default function Navbar() {
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-6 px-4 md:h-16 md:px-6">
           <Link
             to="/"
-            className="font-display text-lg font-semibold tracking-[0.28em] text-chocolate uppercase md:text-xl"
+            className="font-display text-2xl font-medium tracking-tight text-chocolate lowercase md:text-[1.7rem]"
           >
-            Obsequiums
+            obsequiums
           </Link>
 
           <nav aria-label="Navegación principal" className="hidden xl:block">

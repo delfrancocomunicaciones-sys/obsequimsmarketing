@@ -43,9 +43,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
         >
           <div className="mx-auto flex min-h-full max-w-3xl flex-col px-6 py-6">
             <div className="flex items-center justify-between">
-              <p className="font-display text-lg font-semibold tracking-[0.28em] text-ivory uppercase">
-                Obsequiums
-              </p>
+              <p className="font-display text-2xl font-medium tracking-tight text-ivory lowercase">obsequiums</p>
               <button
                 ref={closeRef}
                 type="button"

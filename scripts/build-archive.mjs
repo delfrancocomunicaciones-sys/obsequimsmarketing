@@ -84,18 +84,6 @@ const documents = DOCS.filter((d) => available.includes(d.file)).map((doc) => {
 // si las fuentes no cambiaron.
 writeFileSync(outFile, JSON.stringify({ documents }, null, 2));
 
-// Estadísticas ligeras para páginas que no necesitan el contenido completo
-// (evita arrastrar el JSON íntegro al bundle inicial).
-const stats = {
-  documentos: documents.length,
-  secciones: documents.reduce((n, d) => n + d.sections.length, 0),
-  caracteres: documents.reduce(
-    (n, d) => n + d.intro.length + d.sections.reduce((m, s) => m + s.body.length, 0),
-    0,
-  ),
-};
-writeFileSync(join(root, 'src', 'data', 'archive.stats.json'), JSON.stringify(stats, null, 2));
-
 console.log(
   `archive.generated.json → ${documents.length} documentos, ${documents.reduce((n, d) => n + d.sections.length, 0)} secciones, ${documents.reduce((n, d) => n + d.intro.length + d.sections.reduce((m, s) => m + s.body.length, 0), 0)} caracteres.`,
 );

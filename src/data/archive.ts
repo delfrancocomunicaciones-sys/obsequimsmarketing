@@ -26,12 +26,3 @@ export interface ArchiveDocument {
 }
 
 export const archiveDocuments: ArchiveDocument[] = generated.documents;
-
-export const archiveStats = {
-  documentos: archiveDocuments.length,
-  secciones: archiveDocuments.reduce((n, d) => n + d.sections.length, 0),
-  caracteres: archiveDocuments.reduce(
-    (n, d) => n + d.intro.length + d.sections.reduce((m, s) => m + s.body.length, 0),
-    0,
-  ),
-};
