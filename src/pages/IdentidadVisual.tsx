@@ -27,8 +27,35 @@ import SectionHeader from '../components/ui/SectionHeader';
 import Reveal from '../components/ui/Reveal';
 import DataTable from '../components/ui/DataTable';
 import Tabs from '../components/ui/Tabs';
-import AssetPlaceholder from '../components/ui/AssetPlaceholder';
+import PhotoFrame from '../components/ui/PhotoFrame';
 import CTASection from '../components/ui/CTASection';
+import fotoHero from '../assets/foto-hero-cerrado.webp';
+import fotoMacro from '../assets/foto-macro-tacto.webp';
+import fotoMesilla from '../assets/foto-uso-mesilla.webp';
+import fotoViaje from '../assets/foto-viaje-maleta.webp';
+
+const FOTOGRAFIAS = [
+  {
+    src: fotoHero,
+    caption: 'Producto hero',
+    alt: 'Estuche cilíndrico de piel marrón cerrado, iluminado con luz cálida lateral sobre fondo neutro de baja exposición.',
+  },
+  {
+    src: fotoMacro,
+    caption: 'Macro tactilidad',
+    alt: 'Primer plano de una mano tocando el cuero de un estuche abierto, con costuras, remaches metálicos e interior compartimentado a la vista.',
+  },
+  {
+    src: fotoMesilla,
+    caption: 'Uso real · mesilla de noche',
+    alt: 'Estuche de piel marrón sobre una mesilla de noche junto a una lámpara cálida, un reloj y una bandeja con una pulsera, en ambiente íntimo nocturno.',
+  },
+  {
+    src: fotoViaje,
+    caption: 'Viaje · maleta',
+    alt: 'Estuche de piel camel abierto dentro de una maleta preparada, junto a un pasaporte, una cartera de piel, gafas de sol y ropa doblada.',
+  },
+];
 
 const SECTIONS = [
   { id: 'paleta', label: 'Paleta' },
@@ -137,10 +164,9 @@ export default function IdentidadVisual() {
           intro={principioFotografico}
         />
         <div className="mb-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <AssetPlaceholder label="Producto hero: estuche cerrado, fondo cálido" kind="foto" tone="sand" ratio="4/5" />
-          <AssetPlaceholder label="Macro tactilidad: mano tocando el cuero" kind="foto" tone="camel" ratio="4/5" />
-          <AssetPlaceholder label="Uso real: mesilla de noche, ritual nocturno" kind="escena" tone="chocolate" ratio="4/5" />
-          <AssetPlaceholder label="Viaje: maleta abierta, pasaporte y estuche" kind="escena" tone="smoke" ratio="4/5" />
+          {FOTOGRAFIAS.map((foto, i) => (
+            <PhotoFrame key={foto.caption} src={foto.src} alt={foto.alt} caption={foto.caption} index={i} />
+          ))}
         </div>
         <Tabs
           label="Sistema fotográfico"
